@@ -1,6 +1,6 @@
 diff -Naur lurker-0.8.orig/imgs/Jamfile lurker-0.8/imgs/Jamfile
 --- lurker-0.8.orig/imgs/Jamfile	Sat Jun  7 16:35:25 2003
-+++ lurker-0.8/imgs/Jamfile	Sat Jun  7 17:11:43 2003
++++ lurker-0.8/imgs/Jamfile	Sat Jun  7 22:13:02 2003
 @@ -1,6 +1,6 @@
  SubDir TOP imgs ;
  
@@ -11,7 +11,7 @@ diff -Naur lurker-0.8.orig/imgs/Jamfile lurker-0.8/imgs/Jamfile
  	c.png
 diff -Naur lurker-0.8.orig/render/Jamfile lurker-0.8/render/Jamfile
 --- lurker-0.8.orig/render/Jamfile	Sat Jun  7 16:35:25 2003
-+++ lurker-0.8/render/Jamfile	Sat Jun  7 17:09:45 2003
++++ lurker-0.8/render/Jamfile	Sat Jun  7 22:13:02 2003
 @@ -35,7 +35,7 @@
  
  LinkLibraries keyword.cgi : libcommon ;
@@ -23,18 +23,18 @@ diff -Naur lurker-0.8.orig/render/Jamfile lurker-0.8/render/Jamfile
  	keyword.cgi
 diff -Naur lurker-0.8.orig/xslt/Jamfile lurker-0.8/xslt/Jamfile
 --- lurker-0.8.orig/xslt/Jamfile	Sat Jun  7 16:35:25 2003
-+++ lurker-0.8/xslt/Jamfile	Sat Jun  7 17:11:31 2003
++++ lurker-0.8/xslt/Jamfile	Sat Jun  7 22:13:35 2003
 @@ -1,11 +1,11 @@
  SubDir TOP xslt ;
  
 -InstallFile $(VARDIR)/www/$(PACKAGE) : 
-+InstallFile $(DESTDIR)/home/services/httpd/html/lurker/$(PACKAGE) : 
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/ : 
  	browserdetect.js
  	index.html
  	;
  
 -InstallFile $(VARDIR)/www/$(PACKAGE)/fmt :
-+InstallFile $(DESTDIR)/home/services/httpd/html/lurker/$(PACKAGE)/fmt :
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/fmt :
  	default.css
  	common.xsl
  	deutsch.xsl
