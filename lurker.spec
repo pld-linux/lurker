@@ -14,6 +14,7 @@ Patch0:		%{name}-www_path.patch
 URL:		http://lurker.sourceforge.net/
 BuildRequires:	jam
 BuildRequires:	libxslt-devel
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _datadir        /home/services/httpd
