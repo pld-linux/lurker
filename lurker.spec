@@ -6,7 +6,9 @@ Version:	0.8
 Release:	1
 License:	GPL
 Group:		Applications/Mail
+# Source0-md5:	2f3e192a1a91b898a599ef10d212328c
 Source0:	http://cesnet.dl.sourceforge.net/sourceforge/lurker/%{name}-%{version}.tar.gz
+# Source1-md5:	f50d492e9bae694b449033a188afb770
 Source1:	http://cesnet.dl.sourceforge.net/sourceforge/lurker/mimelib-%{mimelib_version}.tar.gz
 Patch0:		%{name}-www_path.patch
 URL:		http://sourceforge.net/projects/lurker/
