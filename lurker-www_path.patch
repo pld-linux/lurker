@@ -1,0 +1,58 @@
+diff -Naur lurker-0.8.orig/imgs/Jamfile lurker-0.8/imgs/Jamfile
+--- lurker-0.8.orig/imgs/Jamfile	Sat Jun  7 16:35:25 2003
++++ lurker-0.8/imgs/Jamfile	Sat Jun  7 17:11:43 2003
+@@ -1,6 +1,6 @@
+ SubDir TOP imgs ;
+ 
+-InstallFile $(VARDIR)/www/$(PACKAGE)/imgs :
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/imgs :
+ 	a.png
+ 	b.png
+ 	c.png
+diff -Naur lurker-0.8.orig/render/Jamfile lurker-0.8/render/Jamfile
+--- lurker-0.8.orig/render/Jamfile	Sat Jun  7 16:35:25 2003
++++ lurker-0.8/render/Jamfile	Sat Jun  7 17:09:45 2003
+@@ -35,7 +35,7 @@
+ 
+ LinkLibraries keyword.cgi : libcommon ;
+ 
+-InstallBin $(LIBDIR)/cgi-bin : 
++InstallBin $(DESTDIR)/home/services/httpd/cgi-bin : 
+ 	lurker.cgi 
+ 	jump.cgi 
+ 	keyword.cgi
+diff -Naur lurker-0.8.orig/xslt/Jamfile lurker-0.8/xslt/Jamfile
+--- lurker-0.8.orig/xslt/Jamfile	Sat Jun  7 16:35:25 2003
++++ lurker-0.8/xslt/Jamfile	Sat Jun  7 17:11:31 2003
+@@ -1,11 +1,11 @@
+ SubDir TOP xslt ;
+ 
+-InstallFile $(VARDIR)/www/$(PACKAGE) : 
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/$(PACKAGE) : 
+ 	browserdetect.js
+ 	index.html
+ 	;
+ 
+-InstallFile $(VARDIR)/www/$(PACKAGE)/fmt :
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/$(PACKAGE)/fmt :
+ 	default.css
+ 	common.xsl
+ 	deutsch.xsl
+@@ -25,10 +25,10 @@
+ 
+ SoftLink lang.xsl : english.xsl ;
+ 
+-InstallFile $(VARDIR)/www/$(PACKAGE)/attach  : stub ;
+-InstallFile $(VARDIR)/www/$(PACKAGE)/mbox    : stub ;
+-InstallFile $(VARDIR)/www/$(PACKAGE)/message : stub ;
+-InstallFile $(VARDIR)/www/$(PACKAGE)/mindex  : stub ;
+-InstallFile $(VARDIR)/www/$(PACKAGE)/search  : stub ;
+-InstallFile $(VARDIR)/www/$(PACKAGE)/splash  : stub ;
+-InstallFile $(VARDIR)/www/$(PACKAGE)/thread  : stub ;
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/attach  : stub ;
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/mbox    : stub ;
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/message : stub ;
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/mindex  : stub ;
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/search  : stub ;
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/splash  : stub ;
++InstallFile $(DESTDIR)/home/services/httpd/html/lurker/thread  : stub ;
