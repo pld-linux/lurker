@@ -6,12 +6,12 @@ Version:	0.8
 Release:	1
 License:	GPL
 Group:		Applications/Mail
-Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/lurker/%{name}-%{version}.tar.gz
 # Source0-md5:	2f3e192a1a91b898a599ef10d212328c
-Source1:	http://dl.sourceforge.net/sourceforge/%{name}/mimelib-%{mimelib_version}.tar.gz
+Source1:	http://dl.sourceforge.net/lurker/mimelib-%{mimelib_version}.tar.gz
 # Source1-md5:	f50d492e9bae694b449033a188afb770
 Patch0:		%{name}-www_path.patch
-URL:		http://sourceforge.net/projects/lurker/
+URL:		http://lurker.sourceforge.net/
 BuildRequires:	jam
 BuildRequires:	libxslt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,20 +52,22 @@ jam
 
 %install
 rm -rf $RPM_BUILD_ROOT
-DESTDIR=$RPM_BUILD_ROOT jam install
 
+DESTDIR=$RPM_BUILD_ROOT \
+jam install
 
 %clean
-#rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README FAQ INSTALL
 %attr(755,root,root) %{_bindir}/*
 %config %{_sysconfdir}/%{name}.conf
-%dir /var/lib/%{name}/
-%dir %attr(755,http,http) %{_datadir}/html/%{name}/
-%attr(755,http,http) %{_datadir}/html/%{name}/
+%dir /var/lib/%{name}
+# XXX: are all those http,http really necessary???
+%dir %attr(755,http,http) %{_datadir}/html/%{name}
+%attr(755,http,http) %{_datadir}/html/%{name}
 %attr(755,http,http) %{_datadir}/html/%{name}/attach
 %attr(755,http,http) %{_datadir}/html/%{name}/fmt
 %attr(755,http,http) %{_datadir}/html/%{name}/imgs
@@ -77,7 +79,9 @@ DESTDIR=$RPM_BUILD_ROOT jam install
 %attr(755,http,http) %{_datadir}/html/%{name}/thread
 %attr(644,http,http) %{_datadir}/html/%{name}/browserdetect.js
 %attr(644,http,http) %{_datadir}/html/%{name}/index.html
+%dir %attr(755,http,http) %{_datadir}/html/%{name}/imgs
 %attr(644,http,http) %{_datadir}/html/%{name}/imgs/*
+%dir %attr(755,http,http) %{_datadir}/html/%{name}/fmt
 %attr(644,http,http) %{_datadir}/html/%{name}/fmt/*
 %attr(755,root,root) %{_datadir}/cgi-bin/*
 %{_mandir}/man1/*
