@@ -1,15 +1,15 @@
 %define		mimelib_version 3.1.1
-Summary:	email archiver
-Summary(pl):	archiwizator emaili
+Summary:	E-mail archiver
+Summary(pl):	Archiwizator poczty elektronicznej
 Name:		lurker
 Version:	0.8
 Release:	1
 License:	GPL
 Group:		Applications/Mail
-# Source0-md5:	2f3e192a1a91b898a599ef10d212328c
 Source0:	http://cesnet.dl.sourceforge.net/sourceforge/lurker/%{name}-%{version}.tar.gz
-# Source1-md5:	f50d492e9bae694b449033a188afb770
+# Source0-md5:	2f3e192a1a91b898a599ef10d212328c
 Source1:	http://cesnet.dl.sourceforge.net/sourceforge/lurker/mimelib-%{mimelib_version}.tar.gz
+# Source1-md5:	f50d492e9bae694b449033a188afb770
 Patch0:		%{name}-www_path.patch
 URL:		http://sourceforge.net/projects/lurker/
 BuildRequires:	jam
@@ -31,9 +31,19 @@ Noteworthy features;
     - Cache files available directly to the web server
     - Completely customizable output
 
+%description -l pl
+Szybki i intuicyjny archiwizator potrafi±cy poradziæ sobie z du¿±
+ilo¶ci± poczty elekronicznej.
+
+Wa¿niejsze cechy:
+    - Szybkie pe³notekstowe przeszukiwanie
+    - W±tkowanie
+    - Obs³uga za³±czników
+    - Obs³uga wielu jêzyków
+    - Dowolnie formatowalny format wyj¶ciowy
 
 %prep
-%setup -q -n %{name}-%{version} -a 1
+%setup -q -a 1
 %patch0 -p1
 
 %build
@@ -58,5 +68,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/html/%{name}/
 %{_datadir}/cgi-bin/*
 %{_mandir}/man1/*
-
-#%{_datadir}/%{name}
