@@ -47,7 +47,7 @@ Wa¿niejsze cechy:
 %patch0 -p1
 
 %build
-%configure --with-mimelib-local
+%configure
 jam
 
 %install
@@ -56,15 +56,28 @@ DESTDIR=$RPM_BUILD_ROOT jam install
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README FAQ INSTALL
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/%{name}.conf
+%config %{_sysconfdir}/%{name}.conf
 %dir /var/lib/%{name}/
-%dir %{_datadir}/html/%{name}/
-%{_datadir}/html/%{name}/
-%{_datadir}/cgi-bin/*
+%dir %attr(755,http,http) %{_datadir}/html/%{name}/
+%attr(755,http,http) %{_datadir}/html/%{name}/
+%attr(755,http,http) %{_datadir}/html/%{name}/attach
+%attr(755,http,http) %{_datadir}/html/%{name}/fmt
+%attr(755,http,http) %{_datadir}/html/%{name}/imgs
+%attr(755,http,http) %{_datadir}/html/%{name}/mbox
+%attr(755,http,http) %{_datadir}/html/%{name}/message
+%attr(755,http,http) %{_datadir}/html/%{name}/mindex
+%attr(755,http,http) %{_datadir}/html/%{name}/search
+%attr(755,http,http) %{_datadir}/html/%{name}/splash
+%attr(755,http,http) %{_datadir}/html/%{name}/thread
+%attr(644,http,http) %{_datadir}/html/%{name}/browserdetect.js
+%attr(644,http,http) %{_datadir}/html/%{name}/index.html
+%attr(644,http,http) %{_datadir}/html/%{name}/imgs/*
+%attr(644,http,http) %{_datadir}/html/%{name}/fmt/*
+%attr(755,root,root) %{_datadir}/cgi-bin/*
 %{_mandir}/man1/*
