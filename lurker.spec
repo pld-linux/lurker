@@ -34,7 +34,7 @@ Noteworthy features;
 
 %description -l pl
 Szybki i intuicyjny archiwizator potrafi±cy poradziæ sobie z du¿±
-ilo¶ci± poczty elekronicznej.
+ilo¶ci± poczty elektronicznej.
 
 Wa¿niejsze cechy:
     - Szybkie pe³notekstowe przeszukiwanie
