@@ -1,6 +1,6 @@
 %define		mimelib_version 3.1.1
 Summary:	E-mail archiver
-Summary(pl):	Archiwizator poczty elektronicznej
+Summary(pl.UTF-8):   Archiwizator poczty elektronicznej
 Name:		lurker
 Version:	0.8
 Release:	1
@@ -32,16 +32,16 @@ Noteworthy features;
     - Cache files available directly to the web server
     - Completely customizable output
 
-%description -l pl
-Szybki i intuicyjny archiwizator potrafi±cy poradziæ sobie z du¿±
-ilo¶ci± poczty elektronicznej.
+%description -l pl.UTF-8
+Szybki i intuicyjny archiwizator potrafiÄ…cy poradziÄ‡ sobie z duÅ¼Ä…
+iloÅ›ciÄ… poczty elektronicznej.
 
-Wa¿niejsze cechy:
-    - Szybkie pe³notekstowe przeszukiwanie
-    - W±tkowanie
-    - Obs³uga za³±czników
-    - Obs³uga wielu jêzyków
-    - Dowolnie formatowalny format wyj¶ciowy
+WaÅ¼niejsze cechy:
+    - Szybkie peÅ‚notekstowe przeszukiwanie
+    - WÄ…tkowanie
+    - ObsÅ‚uga zaÅ‚Ä…cznikÃ³w
+    - ObsÅ‚uga wielu jÄ™zykÃ³w
+    - Dowolnie formatowalny format wyjÅ›ciowy
 
 %prep
 %setup -q -a 1
