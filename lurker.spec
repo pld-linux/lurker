@@ -1,6 +1,6 @@
 %define		mimelib_version 3.1.1
 Summary:	E-mail archiver
-Summary(pl.UTF-8):   Archiwizator poczty elektronicznej
+Summary(pl.UTF-8):	Archiwizator poczty elektronicznej
 Name:		lurker
 Version:	0.8
 Release:	1
