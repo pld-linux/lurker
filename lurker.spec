@@ -1,23 +1,21 @@
-%define		mimelib_version 3.1.1
+# TODO:
+# - proper webapp config
+%define	mimelib_version	3.1.1
 Summary:	E-mail archiver
 Summary(pl.UTF-8):	Archiwizator poczty elektronicznej
 Name:		lurker
-Version:	0.8
-Release:	1
+Version:	2.1
+Release:	0.1
 License:	GPL
 Group:		Applications/Mail
 Source0:	http://dl.sourceforge.net/lurker/%{name}-%{version}.tar.gz
-# Source0-md5:	2f3e192a1a91b898a599ef10d212328c
-Source1:	http://dl.sourceforge.net/lurker/mimelib-%{mimelib_version}.tar.gz
-# Source1-md5:	f50d492e9bae694b449033a188afb770
-Patch0:		%{name}-www_path.patch
+# Source0-md5:	44e73a53e84e895a8a361ae27dcda6dd
+Source1:       http://dl.sourceforge.net/lurker/mimelib-%{mimelib_version}.tar.gz
+# Source1-md5: f50d492e9bae694b449033a188afb770
 URL:		http://lurker.sourceforge.net/
-BuildRequires:	jam
-BuildRequires:	libxslt-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define         _datadir        /home/services/httpd
 
 %description
 An archiver which can handle extremely large amounts of email.
@@ -44,18 +42,20 @@ Ważniejsze cechy:
     - Dowolnie formatowalny format wyjściowy
 
 %prep
-%setup -q -a 1
-%patch0 -p1
+%setup -q -a1
 
 %build
-%configure
-jam
+%configure \
+	--with-mimelib-local \
+	--with-default-www-dir=%{_datadir}/%{name}/www \
+	--with-cgi-bin-dir=%{_libdir}/%{name}/cgi-bin
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-DESTDIR=$RPM_BUILD_ROOT \
-jam install
+%{__make} install install-config \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -64,25 +64,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog README FAQ INSTALL
 %attr(755,root,root) %{_bindir}/*
-%config %{_sysconfdir}/%{name}.conf
+%dir %{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/*.conf
 %dir /var/lib/%{name}
+%dir %{_datadir}/%{name}
 # XXX: are all those http,http really necessary???
-%dir %attr(755,http,http) %{_datadir}/html/%{name}
-%attr(755,http,http) %{_datadir}/html/%{name}
-%attr(755,http,http) %{_datadir}/html/%{name}/attach
-%attr(755,http,http) %{_datadir}/html/%{name}/fmt
-%attr(755,http,http) %{_datadir}/html/%{name}/imgs
-%attr(755,http,http) %{_datadir}/html/%{name}/mbox
-%attr(755,http,http) %{_datadir}/html/%{name}/message
-%attr(755,http,http) %{_datadir}/html/%{name}/mindex
-%attr(755,http,http) %{_datadir}/html/%{name}/search
-%attr(755,http,http) %{_datadir}/html/%{name}/splash
-%attr(755,http,http) %{_datadir}/html/%{name}/thread
-%attr(644,http,http) %{_datadir}/html/%{name}/browserdetect.js
-%attr(644,http,http) %{_datadir}/html/%{name}/index.html
-%dir %attr(755,http,http) %{_datadir}/html/%{name}/imgs
-%attr(644,http,http) %{_datadir}/html/%{name}/imgs/*
-%dir %attr(755,http,http) %{_datadir}/html/%{name}/fmt
-%attr(644,http,http) %{_datadir}/html/%{name}/fmt/*
-%attr(755,root,root) %{_datadir}/cgi-bin/*
+%attr(755,http,http) %{_datadir}/%{name}/www
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/cgi-bin
+%attr(755,root,root) %{_libdir}/%{name}/cgi-bin/*
 %{_mandir}/man1/*
